@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import jsonify
-from . import test_blueprint
+from app.v1.test import test_blueprint
 
 
 @test_blueprint.route('/')

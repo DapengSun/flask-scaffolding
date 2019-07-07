@@ -8,7 +8,7 @@ def register_blueprint(app):
     注册蓝图
     :return:
     '''
-    from app.v1.test.test import test_blueprint
+    from app.v1.test import test_blueprint
     app.register_blueprint(test_blueprint)
 
 
