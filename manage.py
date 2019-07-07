@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask_script import Manager
+from flask_script import Manager, Server
 from script.common_manage import Common_manager
 from app.app import app
 
@@ -12,7 +12,7 @@ def register_command():
     :return:
     '''
     manager.add_command('common', Common_manager)
-
+    manager.add_command('runserver', Server(use_debugger=True))
 
 @manager.command
 def test():

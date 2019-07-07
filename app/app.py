@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
+from app.v1 import *
+
+
+def register_blueprint(app):
+    '''
+    注册蓝图
+    :return:
+    '''
+    from app.v1.test.test import test_blueprint
+    app.register_blueprint(test_blueprint)
 
 
 def create_app():
@@ -8,6 +18,8 @@ def create_app():
     :return:
     '''
     app = Flask(__name__)
+    # 注册蓝图
+    register_blueprint(app)
     return app
 
 
