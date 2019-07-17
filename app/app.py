@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
+import logging
+import logging.handlers
 from flasgger import Swagger
 from flask import Flask
-
-
-# from app.v1 import *
 
 
 def register_blueprint(app):
@@ -13,6 +12,7 @@ def register_blueprint(app):
     '''
     from app.v1.test import test_blueprint
     app.register_blueprint(test_blueprint)
+    app.logger.info('注册蓝图成功')
 
 
 def register_swagger(app):
@@ -28,16 +28,31 @@ def register_swagger(app):
     swagger_config['description'] = config_swagger.SWAGGER_DESC  # 配置公共描述内容
     swagger_config['host'] = config_swagger.SWAGGER_HOST  # 请求域名
     Swagger(app, config=swagger_config)
+    app.logger.info('注册swagger成功')
 
 
-def register_common(app):
+def register_logger(app):
     '''
-    注册common config
+    注册日志模块
     :param app:
     :return:
     '''
-    import config.config_common as config_common
-    app.config.from_object(config_common)
+    from config.config_logger import LOGGER_FORMAT as logger_fmt, LOGGER_FILE_PATH as logger_file_path, \
+        LOGGER_SIZE as size, LOGGER_BACKUP_COUNT as bacpup_count, LOGGER_WHEN as when, LOGGER_INTERVAL as interval
+    # 日志格式化配置
+    fmt = logging.Formatter(logger_fmt)
+
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(fmt)
+    app.logger.addHandler(stream_handler)
+    app.logger.setLevel(logging.DEBUG)
+
+    # rotating file 配置
+    file_handler = logging.handlers.TimedRotatingFileHandler(
+        filename=logger_file_path, when=when, interval=interval, backupCount=bacpup_count
+    )
+    file_handler.setFormatter(fmt)
+    app.logger.addHandler(file_handler)
 
 
 def create_app():
@@ -46,6 +61,8 @@ def create_app():
     :return:
     '''
     app = Flask(__name__)
+    # 注册日志
+    register_logger(app)
     # 注册蓝图
     register_blueprint(app)
     # 注册swagger
