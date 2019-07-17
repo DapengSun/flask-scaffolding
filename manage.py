@@ -12,7 +12,8 @@ def register_command():
     :return:
     '''
     manager.add_command('common', Common_manager)
-    manager.add_command('runserver', Server(use_debugger=True))
+    manager.add_command('runserver', Server(host='127.0.0.1', port=9000, use_debugger=True))
+
 
 @manager.command
 def test():
