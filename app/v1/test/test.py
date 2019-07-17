@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import jsonify
+from flask import jsonify, current_app
 from app.v1.test import test_blueprint
 
 
@@ -17,4 +17,5 @@ def test_func():
           description: 测试成功
           example: {'code':200,'message':'test is ok'}
     """
+    current_app.logger.debug('test is ok')
     return jsonify({'code': 200, 'msg': 'test is ok'})

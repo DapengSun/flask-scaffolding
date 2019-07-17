@@ -38,20 +38,23 @@ def register_logger(app):
     :return:
     '''
     from config.config_logger import LOGGER_FORMAT as logger_fmt, LOGGER_FILE_PATH as logger_file_path, \
-        LOGGER_SIZE as size, LOGGER_BACKUP_COUNT as bacpup_count, LOGGER_WHEN as when, LOGGER_INTERVAL as interval
+        LOGGER_BACKUP_COUNT as backup_count, LOGGER_WHEN as when, LOGGER_INTERVAL as interval, LOGGER_LEVEL as level
+
+    logger = logging.getLogger("logger")
     # 日志格式化配置
     fmt = logging.Formatter(logger_fmt)
 
     stream_handler = logging.StreamHandler()
     stream_handler.setFormatter(fmt)
+    app.logger.setLevel(level)
     app.logger.addHandler(stream_handler)
-    app.logger.setLevel(logging.DEBUG)
 
     # rotating file 配置
     file_handler = logging.handlers.TimedRotatingFileHandler(
-        filename=logger_file_path, when=when, interval=interval, backupCount=bacpup_count
+        filename=logger_file_path, when=when, interval=interval, backupCount=backup_count
     )
     file_handler.setFormatter(fmt)
+    app.logger.setLevel(level)
     app.logger.addHandler(file_handler)
 
 
