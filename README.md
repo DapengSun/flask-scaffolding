@@ -33,6 +33,14 @@ python manage.py runserver
  ```
 路径/env/bin/celery -A celery_worker.celery worker --loglevel=info
 ```
+#### step5: sqlalchemy创建、迁移
+ ```
+# sqlalchemy创建、迁移
+$ python manage.py db init
+$ python manage.py db migrate
+$ python manage.py db upgrade
+$ python manage.py db --help
+```
 
 # 开发者交流
 1215404991@qq.com<br>

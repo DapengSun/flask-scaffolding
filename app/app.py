@@ -2,6 +2,21 @@
 import logging
 import logging.handlers
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+
+def register_sqlalchemy(app):
+    '''
+    注册sqlalchemy
+    :param app:
+    :return:
+    '''
+    import config.config_sqlalchemy as config_sqlalchemy
+    app.config.from_object(config_sqlalchemy)
+    db.init_app(app)
+    app.logger.info('注册sqlalchemy模块成功')
 
 
 def register_blueprint(app):
@@ -11,7 +26,7 @@ def register_blueprint(app):
     '''
     from app.v1.test import test_blueprint
     app.register_blueprint(test_blueprint)
-    app.logger.info('注册蓝图成功')
+    app.logger.info('注册蓝图模块成功')
 
 
 def register_swagger(app):
@@ -28,7 +43,7 @@ def register_swagger(app):
     swagger_config['description'] = config_swagger.SWAGGER_DESC  # 配置公共描述内容
     swagger_config['host'] = config_swagger.SWAGGER_HOST  # 请求域名
     Swagger(app, config=swagger_config)
-    app.logger.info('注册swagger成功')
+    app.logger.info('注册swagger模块成功')
 
 
 def register_logger(app):
@@ -55,6 +70,7 @@ def register_logger(app):
     file_handler.setFormatter(fmt)
     app.logger.setLevel(level)
     app.logger.addHandler(file_handler)
+    app.logger.info('注册日志模块成功')
 
 
 def register_celery(app):
@@ -67,7 +83,7 @@ def register_celery(app):
     import config.config_celery as config_celery
     app.config.from_object(config_celery)
     celery.init_app(app)
-    app.logger.info('注册celery成功')
+    app.logger.info('注册celery模块成功')
 
 
 def create_app():
@@ -84,6 +100,8 @@ def create_app():
     register_blueprint(app)
     # 注册swagger
     register_swagger(app)
+    # 注册sqlalchemy
+    register_sqlalchemy(app)
     return app
 
 
