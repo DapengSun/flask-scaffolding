@@ -20,7 +20,7 @@ logger配置
 import logging
 
 LOGGER_FORMAT = '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'
-LOGGER_FILE_PATH = 'logs/cmdb.log'
+LOGGER_FILE_PATH = '/Users/sundapeng/Documents/project/flask-scaffolding/logs/cmdb.log'
 LOGGER_SIZE = 1024 * 1024 * 8
 LOGGER_BACKUP_COUNT = 20
 LOGGER_WHEN = 'D'

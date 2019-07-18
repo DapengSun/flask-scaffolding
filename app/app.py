@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
 import logging.handlers
-from flasgger import Swagger
 from flask import Flask
 
 
@@ -21,6 +20,7 @@ def register_swagger(app):
     :param app:
     :return:
     '''
+    from flasgger import Swagger
     import config.config_swagger as config_swagger
     app.config.from_object(config_swagger)
     swagger_config = Swagger.DEFAULT_CONFIG
@@ -40,7 +40,6 @@ def register_logger(app):
     from config.config_logger import LOGGER_FORMAT as logger_fmt, LOGGER_FILE_PATH as logger_file_path, \
         LOGGER_BACKUP_COUNT as backup_count, LOGGER_WHEN as when, LOGGER_INTERVAL as interval, LOGGER_LEVEL as level
 
-    logger = logging.getLogger("logger")
     # 日志格式化配置
     fmt = logging.Formatter(logger_fmt)
 
@@ -58,12 +57,27 @@ def register_logger(app):
     app.logger.addHandler(file_handler)
 
 
+def register_celery(app):
+    '''
+    创建celery配置
+    :param app:
+    :return:
+    '''
+    from app.celery_extensions import celery
+    import config.config_celery as config_celery
+    app.config.from_object(config_celery)
+    celery.init_app(app)
+    app.logger.info('注册celery成功')
+
+
 def create_app():
     '''
     创建核心对象
     :return:
     '''
     app = Flask(__name__)
+    # 创建celery配置
+    register_celery(app)
     # 注册日志
     register_logger(app)
     # 注册蓝图

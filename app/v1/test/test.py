@@ -1,4 +1,8 @@
-# -*- coding: utf-8 -*-
+# coding: UTF-8
+# author: sundapeng
+# ctime: 2019-07-17 21:31
+# file: test.py
+# ide: PyCharm
 from flask import jsonify, current_app
 from app.v1.test import test_blueprint
 
