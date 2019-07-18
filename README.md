@@ -40,6 +40,7 @@ $ python manage.py db init
 $ python manage.py db migrate
 $ python manage.py db upgrade
 $ python manage.py db --help
+参考：https://flask-migrate.readthedocs.io/en/latest/
 ```
 
 # 开发者交流
