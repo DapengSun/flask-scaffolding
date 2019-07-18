@@ -3,8 +3,9 @@
 Flask-scaffolding目的是整合常用flask模块，起到复用轮子的效果<br>
 
 ## v0.10 新功能
-支持celery异步任务框架-定时任务、异步任务<br>
-支持<br>
+整合Celery异步任务框架-定时任务、异步任务<br>
+整合SwaggerAPI文档框架<br>
+整合Logger日志<br>
 
 
 ## 开发环境
