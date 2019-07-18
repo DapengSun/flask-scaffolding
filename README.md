@@ -1,5 +1,6 @@
 # Flask-scaffolding
-<br>
+![](https://img.shields.io/badge/version-0.1-green.svg) ![](https://img.shields.io/badge/build-developing-blue.svg)
+
 Flask-scaffolding目的是整合常用flask模块，起到复用轮子的效果<br>
 
 ## v0.10 新功能
