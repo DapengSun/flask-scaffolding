@@ -14,7 +14,8 @@ macOS 10.13.3 flask 1.1.1 python 3.6.3<br>
 
 ## 下载及克隆
 ```
-git clone https://github.com/guohongze/adminset.git
+https://github.com/DapengSun/flask-scaffolding.git
+git@github.com:DapengSun/flask-scaffolding.git
 ```
 
 #### step1: 搭建虚拟环境virtualenv :
