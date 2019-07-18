@@ -9,4 +9,4 @@ build
 workspace.xml 
 env/
 logs/
-
+.DS_Store
