@@ -11,9 +11,9 @@ Flask-scaffolding目的是整合常用flask模块，起到复用轮子的效果<
 
 
 ## 开发环境
-MacOS 10.13.3 <br>
-Flask 1.1.1 <br>
-Python 3.6.3 <br>
+MacOS==10.13.3 <br>
+Flask==1.1.1 <br>
+Python==3.6.3 <br>
 
 ## 下载及克隆
 ```
