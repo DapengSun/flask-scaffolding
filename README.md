@@ -10,7 +10,9 @@ Flask-scaffolding目的是整合常用flask模块，起到复用轮子的效果<
 
 
 ## 开发环境
-macOS 10.13.3 flask 1.1.1 python 3.6.3<br>
+MacOS 10.13.3 <br>
+Flask 1.1.1 <br>
+Python 3.6.3 <br>
 
 ## 下载及克隆
 ```
@@ -22,11 +24,11 @@ git@github.com:DapengSun/flask-scaffolding.git
 ```
 virtualenv --python==XXX(路径) env
 ```
-#### step2: 安装requirements,txt中依赖包:
+#### step2: 安装requirements.txt中依赖包:
 ```
 pip3 install -r requiremnets.txt 
 ```
-#### step3: 使用mange启动服务
+#### step3: 使用manage启动服务
 ```
 python manage.py runserver  
 ```
