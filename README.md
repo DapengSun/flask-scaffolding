@@ -7,6 +7,7 @@ Flask-scaffolding目的是整合常用flask模块，起到复用轮子的效果<
 整合Celery异步任务框架-定时任务、异步任务<br>
 整合SwaggerAPI文档框架<br>
 整合Logger日志<br>
+整合Flask Restful框架<br>
 
 
 ## 开发环境
@@ -43,7 +44,12 @@ $ python manage.py db init
 $ python manage.py db migrate
 $ python manage.py db upgrade
 $ python manage.py db --help
-参考：https://flask-migrate.readthedocs.io/en/latest/
+```
+
+#### 参考文献
+ ```
+flask-migrate : https://flask-migrate.readthedocs.io/en/latest/
+flask-restful : https://blog.51cto.com/yangrong/2294308
 ```
 
 # 开发者交流
