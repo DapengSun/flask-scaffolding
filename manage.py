@@ -2,7 +2,6 @@
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
 from script.common_manage import common_manager
-from script.db_manage import db_manager
 from app.app import db, app
 from app.v1.model import *
 
@@ -24,7 +23,7 @@ def register_command():
     manager.add_command('db', MigrateCommand)
     # 启动服务
     # $ python manage.py runserver
-    manager.add_command('runserver', Server(host='127.0.0.1', port=9000, use_debugger=True, use_reloader=False))
+    manager.add_command('runserver', Server(host='0.0.0.0', port=9000, use_debugger=True, use_reloader=False))
 
 
 @manager.command

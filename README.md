@@ -21,6 +21,7 @@ https://github.com/DapengSun/flask-scaffolding.git
 git@github.com:DapengSun/flask-scaffolding.git
 ```
 
+## 环境搭建
 #### step1: 搭建虚拟环境virtualenv :
 ```
 virtualenv --python==XXX(路径) env
@@ -37,7 +38,12 @@ python manage.py runserver
  ```
 路径/env/bin/celery -A celery_worker.celery worker --loglevel=info
 ```
-#### step5: sqlalchemy创建、迁移
+#### step5: 创建数据库表
+ ```
+ 地址详见config/config.sqlalchemy配置
+ ```
+ 
+#### step6: sqlalchemy创建、迁移
  ```
 # sqlalchemy创建、迁移
 $ python manage.py db init
@@ -46,10 +52,22 @@ $ python manage.py db upgrade
 $ python manage.py db --help
 ```
 
+## Docker部署
+#### step1: 打包镜像:
+```
+docker build -t flask_docker:v1 .
+```
+
+#### step2: 打包镜像:
+```
+ docker run -d -p 9000:9000 --name flask_docker flask_docker:v1
+```
+
 #### 参考文献
  ```
 flask-migrate : https://flask-migrate.readthedocs.io/en/latest/
 flask-restful : https://blog.51cto.com/yangrong/2294308
+dockerfile    : https://segmentfault.com/a/1190000017081812
 ```
 
 # 开发者交流
